@@ -11,10 +11,16 @@ class LeopardImage extends StatelessWidget {
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
 
-    return Consumer<PageOffsetNotifier>(
-      builder: (context, provider, child) {
+    return Consumer2<PageOffsetNotifier, AnimationController>(
+      builder: (context, provider, animation, child) {
         return Positioned(
-            left: -0.87 * provider.offset, width: width * 1.6, child: child);
+            left: -0.87 * provider.offset,
+            width: width * 1.6,
+            child: Transform.scale(
+                alignment: Alignment(0.6, 0),
+                scale: 1 - 0.1 * animation.value,
+                child:
+                    Opacity(opacity: 1 - 0.6 * animation.value, child: child)));
       },
       child: IgnorePointer(child: Image.asset('assets/leopard.png')),
     );
