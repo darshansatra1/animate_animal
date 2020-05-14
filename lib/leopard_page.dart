@@ -17,12 +17,13 @@ class LeopardImage extends StatelessWidget {
             left: -0.87 * provider.offset,
             width: width * 1.6,
             child: Transform.scale(
-                alignment: Alignment(0.6, 0),
+                alignment: Alignment(0.5, 0),
                 scale: 1 - 0.1 * animation.value,
                 child:
                     Opacity(opacity: 1 - 0.6 * animation.value, child: child)));
       },
-      child: IgnorePointer(child: Image.asset('assets/leopard.png')),
+      child: IgnorePointer(
+          child: MapHider(child: Image.asset('assets/leopard.png'))),
     );
   }
 }
